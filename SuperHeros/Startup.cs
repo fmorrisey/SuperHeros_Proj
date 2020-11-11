@@ -61,8 +61,8 @@ namespace SuperHeros
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllerRoute(
-                    name: "default",
-                    pattern: "{controller=Home}/{action=Index}/{id?}");
+                    name: "default", //change the startup page
+                    pattern: "{controller=SuperHero}/{action=Index}/{id?}");
                 endpoints.MapRazorPages();
             });
         }
