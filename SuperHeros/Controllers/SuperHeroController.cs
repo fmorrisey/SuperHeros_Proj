@@ -21,13 +21,15 @@ namespace SuperHeros.Controllers
         // GET: SuperHeroController
         public ActionResult Index()
         {
-            return View();
+            var returnList = _dbContext.SuperHeroes.ToList();
+            return View(returnList);
         }
 
         // GET: SuperHeroController/Details/5
         public ActionResult Details(int id)
-        {
-            return View();
+        {   // query with uId and grabbing them from the list 
+            var details = _dbContext.SuperHeroes.Find(id);
+            return View(details);
         }
 
         // GET: SuperHeroController/Create
@@ -39,11 +41,11 @@ namespace SuperHeros.Controllers
         // POST: SuperHeroController/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(SuperHero superhero)
+        public ActionResult Create(SuperHero superHero)
         {
             try
             {
-                _dbContext.SuperHeroes.Add(superhero);  //Add new SuperHero to the database
+                _dbContext.SuperHeroes.Add(superHero);  //Add new SuperHero to the database
                 _dbContext.SaveChanges();               //Save the changes made
                 return RedirectToAction(nameof(Index));
             }
@@ -56,16 +58,19 @@ namespace SuperHeros.Controllers
         // GET: SuperHeroController/Edit/5
         public ActionResult Edit(int id)
         {
-            return View();
+            var editSuperHero = _dbContext.SuperHeroes.Find(id);
+            return View(editSuperHero);
         }
 
         // POST: SuperHeroController/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(int id, IFormCollection collection)
+        public ActionResult Edit(int id, SuperHero superHero)
         {
             try
             {
+                _dbContext.SuperHeroes.Update(superHero);
+                _dbContext.SaveChanges();
                 return RedirectToAction(nameof(Index));
             }
             catch
@@ -77,16 +82,19 @@ namespace SuperHeros.Controllers
         // GET: SuperHeroController/Delete/5
         public ActionResult Delete(int id)
         {
-            return View();
+            var deleteSuperHero = _dbContext.SuperHeroes.Find(id);
+            return View(deleteSuperHero);
         }
 
         // POST: SuperHeroController/Delete/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Delete(int id, IFormCollection collection)
+        public ActionResult Delete(int id, SuperHero superHero)
         {
             try
             {
+                _dbContext.SuperHeroes.Remove(superHero);
+                _dbContext.SaveChanges();
                 return RedirectToAction(nameof(Index));
             }
             catch
