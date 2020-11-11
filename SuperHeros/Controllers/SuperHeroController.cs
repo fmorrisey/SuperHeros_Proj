@@ -20,9 +20,16 @@ namespace SuperHeros.Controllers
 
         // GET: SuperHeroController
         public ActionResult Index()
+        {   //Homepage
+            return View();
+        }
+
+        // GET: SuperHeroController
+        public ActionResult Catalog()
         {
             var returnList = _dbContext.SuperHeroes.ToList();
             return View(returnList);
+            
         }
 
         // GET: SuperHeroController/Details/5
@@ -47,7 +54,7 @@ namespace SuperHeros.Controllers
             {
                 _dbContext.SuperHeroes.Add(superHero);  //Add new SuperHero to the database
                 _dbContext.SaveChanges();               //Save the changes made
-                return RedirectToAction(nameof(Index));
+                return RedirectToAction(nameof(Catalog));
             }
             catch
             {
@@ -71,7 +78,7 @@ namespace SuperHeros.Controllers
             {
                 _dbContext.SuperHeroes.Update(superHero);
                 _dbContext.SaveChanges();
-                return RedirectToAction(nameof(Index));
+                return RedirectToAction(nameof(Catalog));
             }
             catch
             {
@@ -95,7 +102,7 @@ namespace SuperHeros.Controllers
             {
                 _dbContext.SuperHeroes.Remove(superHero);
                 _dbContext.SaveChanges();
-                return RedirectToAction(nameof(Index));
+                return RedirectToAction(nameof(Catalog));
             }
             catch
             {

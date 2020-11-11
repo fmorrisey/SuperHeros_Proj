@@ -56,6 +56,16 @@ html {
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
 
+.bgImage {
+    /* Background Image */
+    background-image: url("../assets/black_panther.png");
+    background-position: center;
+    height: 100%;
+    width: 100%;
+}
+
+
+
 article, aside, figcaption, figure, footer, header, hgroup, main, nav, section {
   display: block;
 }
