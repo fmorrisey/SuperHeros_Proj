@@ -58,6 +58,7 @@ html {
 
 .bgImage {
     /* Background Image */
+    /*Image Source https://www.theringer.com/pop-culture/2018/2/14/17012374/marvel-black-panther-comics-history*/
     background-image: url("../assets/black_panther.png");
     background-position: center;
     height: 100%;
